@@ -25,7 +25,7 @@ export default function Home() {
             className="w-48 h-48 rounded-full object-cover shadow-xl border-4 border-white mb-6"
           />
           <h1 className="text-5xl font-extrabold text-green-200 mb-2 tracking-tight">
-            Wilcah S. Quibo
+            Wilcah S. Quibo, RAgr.
           </h1>
 
           <p className="text-green-100 text-sm uppercase tracking-widest mb-6">

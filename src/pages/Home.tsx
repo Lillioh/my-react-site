@@ -1,12 +1,15 @@
-import { useState } from "react"
-import mainImage from "../assets/images/main-w.jpg"
+import { useState } from "react";
+import mainImage from "../assets/images/main-w.jpg";
+import ScheduleTable from "../assets/components/ScheduleTable";
+import SkillsBoard from "../assets/components/SkillsBoard";
 
 export default function Home() {
-  const [showWork, setShowWork] = useState(false)
+  const [showWork, setShowWork] = useState(false);
+  const [activeTab, setActiveTab] = useState("Projects");
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-teal-800 to-emerald-900 overflow-x-hidden">
-
+      
       {/* Profile Section */}
       <div
         className="absolute top-1/2 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
@@ -16,7 +19,6 @@ export default function Home() {
         }}
       >
         <div className="flex flex-col items-center text-center px-4">
-
           <img
             src={mainImage}
             alt="Profile"
@@ -33,7 +35,7 @@ export default function Home() {
 
           <button
             onClick={() => setShowWork(true)}
-            className="bg-sky-500 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:bg-sky-600 transition duration-300"
+            className="bg-sky-500 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-sky-600 transition duration-300"
           >
             My Work
           </button>
@@ -58,49 +60,104 @@ export default function Home() {
       >
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
+          <div className="flex w-full h-12 items-center justify-between">
 
-          <button
-            onClick={() => setShowWork(false)}
-            className="p-3 rounded-full hover:bg-gray-200 transition w-fit"
-            aria-label="Close panel"
-          >
-            <span className="text-2xl font-bold">☰</span>
-          </button>
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setShowWork(false)}
+              className="p-2 rounded-full hover:bg-gray-200 transition"
+              aria-label="Close panel"
+            >
+              <span className="text-2xl font-bold">☰</span>
+            </button>
 
-          {/* Navbar inside panel */}
-          <nav className="flex flex-wrap gap-2 sm:gap-4">
-            <button className="px-3 py-1 text-base sm:text-lg font-semibold text-slate-900 hover:text-green-500 transition">
-              Projects
-            </button>
-            <button className="px-3 py-1 text-base sm:text-lg font-semibold text-slate-900 hover:text-green-500 transition">
-              About Me
-            </button>
-            <button className="px-3 py-1 text-base sm:text-lg font-semibold text-slate-900 hover:text-green-500 transition">
-              Contact
-            </button>
-          </nav>
+            {/* Navbar */}
+            <nav className="flex flex-wrap gap-3 sm:gap-6 justify-center items-center flex-1">
+              <button
+                onClick={() => setActiveTab("Projects")}
+                className={`px-3 py-1 text-base sm:text-lg font-semibold transition ${
+                  activeTab === "Projects"
+                    ? "text-green-600 border-b-2 border-green-600"
+                    : "text-slate-900 hover:text-green-500"
+                }`}
+              >
+                About me
+              </button>
+
+              <button
+                onClick={() => setActiveTab("Class Schedule")}
+                className={`px-3 py-1 text-base sm:text-lg font-semibold transition ${
+                  activeTab === "Class Schedule"
+                    ? "text-green-600 border-b-2 border-green-600"
+                    : "text-slate-900 hover:text-green-500"
+                }`}
+              >
+                Class Schedule
+              </button>
+
+              <button
+                onClick={() => setActiveTab("Contact")}
+                className={`px-3 py-1 text-base sm:text-lg font-semibold transition ${
+                  activeTab === "Contact"
+                    ? "text-green-600 border-b-2 border-green-600"
+                    : "text-slate-900 hover:text-green-500"
+                }`}
+              >
+                Contact
+              </button>
+            </nav>
+
+            {/* Spacer */}
+            <div className="w-10"></div>
+          </div>
         </div>
 
         {/* Panel Content */}
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-sky-900">
-          About Me
-        </h2>
+        <div className="p-4 sm:p-6">
+          
+          {/* ABOUT ME TAB */}
+          {activeTab === "Projects" && (
+            <>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-sky-900 tracking-tight">
+                Agriculturist
+              </h2>
 
-        <div className="text-gray-800 text-base sm:text-lg p-4 rounded-lg bg-white shadow-inner">
-          <div className="space-y-6">
-            <p className="text-gray-700 leading-relaxed">
-              I am a registered agriculturist and instructor with experience in
-              agricultural systems, education, and technology-driven solutions.
-            </p>
+              <p className="text-gray-700 leading-relaxed text-base sm:text-lg mb-10">
+                I am a registered agriculturist and instructor of Tubod College with experience in
+                agricultural systems, education, and technology-driven solutions.
+              </p>
 
-            <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li>Smart irrigation & farm systems</li>
-              <li>Educational content & instruction</li>
-              <li>Data-driven agricultural analysis</li>
-            </ul>
-          </div>
+              {/* Skills Board Component */}
+              <SkillsBoard />
+            </>
+          )}
+
+          {/* CLASS SCHEDULE TAB */}
+          {activeTab === "Class Schedule" && (
+            <>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-sky-900 tracking-tight">
+                Class Schedule
+              </h2>
+              <ScheduleTable />
+            </>
+          )}
+
+          {/* CONTACT TAB */}
+          {activeTab === "Contact" && (
+            <>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-sky-900 tracking-tight">
+                Contact
+              </h2>
+
+              <p className="text-gray-700 text-base sm:text-lg">
+                Email: wilcahsy@gmail.com <br />
+                Facebook: fb.com/sample <br />
+                Phone: +63 900 000 0000
+              </p>
+            </>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }

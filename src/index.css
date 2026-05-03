@@ -1,1 +1,16 @@
 @import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+/* Hide scrollbar but keep scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+body {
+  scroll-padding-top: 20px;
+}

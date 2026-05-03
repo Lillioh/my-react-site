@@ -60,7 +60,7 @@ export default function SkillsBoard() {
   return (
     <div>
       <h3 className="text-2xl sm:text-3xl font-bold mb-6 text-slate-900">
-        Skills Board
+        Skills
       </h3>
 
       <div className="flex gap-6 overflow-x-auto pb-6">

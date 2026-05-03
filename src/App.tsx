@@ -3,16 +3,17 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Skills from "./pages/Skills"
+import ActiveCounter from "../assets/components/ActiveCounter.jsx"
+import ScheduleTable from "../assets/components/ScheduleTable.jsx"
+import Skillsboard from "../assets/components/Skills.jsx"
 
 export default function App() {
   return (
     <BrowserRouter>
-      {/* Navbar
-      <nav className="flex gap-6 p-4 bg-gray-900 text-white">
-        <Link className="hover:text-sky-400" to="/">Home</Link>
-        <Link className="hover:text-sky-400" to="/about">About</Link>
-        <Link className="hover:text-sky-400" to="/contact">Contact</Link>
-      </nav> */}
+      {/* Navbar */}
+      <ActiveCounter />
+      <ScheduleTable />
+      <Skillsboard />
 
       {/* Pages */}
       <Routes>

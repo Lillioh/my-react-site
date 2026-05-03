@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 
+type Time = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
 export default function ActiveCounter() {
   const startDate = new Date("2025-07-16T00:00:00");
 
-  const calculateTime = () => {
+  const calculateTime = (): Time => {
     const now = new Date();
-    const diff = now - startDate;
+    const diff = now.getTime() - startDate.getTime();
 
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -15,7 +22,7 @@ export default function ActiveCounter() {
     };
   };
 
-  const [time, setTime] = useState(calculateTime());
+  const [time, setTime] = useState<Time>(calculateTime());
 
   useEffect(() => {
     const interval = setInterval(() => {

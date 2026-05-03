@@ -1,4 +1,4 @@
-import SkillsBoard from "../assets/components/SkillsBoard.jsx";
+import SkillsBoard from "../assets/components/Skillsboard";
 
 export default function Skills() {
   return (

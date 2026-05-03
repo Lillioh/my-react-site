@@ -1,8 +1,8 @@
 import { useState } from "react";
 import mainImage from "../assets/images/main-w.jpg";
-import ScheduleTable from "../assets/components/ScheduleTable.jsx";
-import SkillsBoard from "../assets/components/SkillsBoard.jsx";
-import ActiveCounter from "../assets/components/ActiveCounter.jsx";
+import ScheduleTable from "../assets/components/ScheduleTable";
+import SkillsBoard from "../assets/components/Skillsboard";
+import ActiveCounter from "../assets/components/ActiveCounter";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Projects");
